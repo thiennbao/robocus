@@ -5,7 +5,7 @@ import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
-import { User } from './modules/user/user.model';
+import { User } from './modules/user/models/user.model';
 
 @Module({
   imports: [
