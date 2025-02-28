@@ -17,5 +17,13 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+}
+
+.gradient-text {
+  @apply bg-clip-text bg-gradient-to-r from-[#f2c3fb] via-[#7e92e6] to-[#a6efff] inline-block text-transparent
 }
