@@ -1,20 +1,19 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { NotFoundException } from '@nestjs/common';
+import { NotFoundException, UseGuards } from '@nestjs/common';
 import { User } from './models/user.entity';
 import { UserService } from './user.service';
 import { UserCreateInput } from './models/user-create.input';
 import { UserUpdateInput } from './models/user-update.input';
+import { JwtGuard } from '../../guards/jwt.guard';
 
 @Resolver()
+@UseGuards(JwtGuard)
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
   @Query(() => User)
-  async user(@Args('id') id: string): Promise<User> {
+  async user(@Args('id') id: string): Promise<User | null> {
     const user = await this.userService.findOneById(id);
-    if (!user) {
-      throw new NotFoundException(`User with id ${id} not found`);
-    }
     return user;
   }
 

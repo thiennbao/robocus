@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { hash } from 'bcryptjs';
@@ -17,7 +17,11 @@ export class UserService {
   }
 
   async findOneById(id: string): Promise<User | null> {
-    return this.userRepository.findOneBy({ id });
+    const user = this.userRepository.findOneBy({ id });
+    if (!user) {
+      throw new NotFoundException();
+    }
+    return user;
   }
 
   async findOneByUsername(username: string): Promise<User | null> {

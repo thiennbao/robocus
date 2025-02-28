@@ -8,13 +8,17 @@ type User {
   password: String!
 }
 
+type AuthLoginResponse {
+  token: String!
+}
+
 type Query {
   user(id: String!): User!
   users: [User!]!
 }
 
 type Mutation {
-  login(data: AuthLoginInput!): String!
+  login(data: AuthLoginInput!): AuthLoginResponse!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!): Boolean!
   deleteUser(id: String!): Boolean!
