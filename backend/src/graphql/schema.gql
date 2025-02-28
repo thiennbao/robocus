@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Competition {
+  id: String!
+  name: String!
+  description: String!
+  rule: String!
+  award: String!
+}
+
 type User {
   id: String!
   username: String!
@@ -15,6 +23,8 @@ type AuthLoginResponse {
 type Query {
   user(id: String!): User!
   users: [User!]!
+  competition(id: String!): Competition!
+  competitions: [Competition!]!
 }
 
 type Mutation {
@@ -22,6 +32,9 @@ type Mutation {
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!): Boolean!
   deleteUser(id: String!): Boolean!
+  createCompetition(data: CompetitionCreateInput!): Competition!
+  updateCompetition(data: CompetitionUpdateInput!): Boolean!
+  deleteCompetition(id: String!): Boolean!
 }
 
 input AuthLoginInput {
@@ -38,4 +51,19 @@ input UserUpdateInput {
   id: String!
   username: String
   password: String
+}
+
+input CompetitionCreateInput {
+  name: String!
+  description: String!
+  rule: String!
+  award: String!
+}
+
+input CompetitionUpdateInput {
+  id: String!
+  name: String
+  description: String
+  rule: String
+  award: String
 }

@@ -9,12 +9,8 @@ import { UserUpdateInput } from './models/user-update.input';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
-
-  async find(): Promise<User[]> {
-    return this.userRepository.find();
-  }
 
   async findOneById(id: string): Promise<User | null> {
     const user = this.userRepository.findOneBy({ id });
@@ -28,6 +24,10 @@ export class UserService {
     return this.userRepository.findOneBy({ username });
   }
 
+  async find(): Promise<User[]> {
+    return this.userRepository.find();
+  }
+
   async create(userCreateInput: UserCreateInput) {
     userCreateInput.password = await hash(userCreateInput.password, 10);
     const newUser = this.userRepository.create(userCreateInput);
@@ -39,7 +39,7 @@ export class UserService {
     return this.userRepository.update({ id }, data);
   }
 
-  async delele(id: string) {
+  async delete(id: string) {
     return this.userRepository.delete({ id });
   }
 }

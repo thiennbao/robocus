@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { NotFoundException, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { User } from './models/user.entity';
 import { UserService } from './user.service';
 import { UserCreateInput } from './models/user-create.input';
@@ -37,7 +37,7 @@ export class UserResolver {
 
   @Mutation(() => Boolean)
   async deleteUser(@Args('id') id: string) {
-    await this.userService.delele(id);
+    await this.userService.delete(id);
     return true;
   }
 }

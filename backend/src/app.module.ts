@@ -1,3 +1,4 @@
+import { CompetitionModule } from './modules/competition/competition.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -7,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
 import { User } from './modules/user/models/user.entity';
 import { AuthModule } from './modules/auth/auth.module';
+import { Competition } from './modules/competition/models/competition.entity';
 
 @Module({
   imports: [
@@ -19,11 +21,12 @@ import { AuthModule } from './modules/auth/auth.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [User],
+      entities: [User, Competition],
       synchronize: true,
     }),
     AuthModule,
     UserModule,
+    CompetitionModule,
   ],
 })
 export class AppModule {}
