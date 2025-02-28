@@ -14,9 +14,15 @@ type Query {
 }
 
 type Mutation {
+  login(data: AuthLoginInput!): String!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!): Boolean!
   deleteUser(id: String!): Boolean!
+}
+
+input AuthLoginInput {
+  username: String!
+  password: String!
 }
 
 input UserCreateInput {

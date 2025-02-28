@@ -5,11 +5,12 @@ import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
-import { User } from './modules/user/models/user.model';
+import { User } from './modules/user/models/user.entity';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ isGlobal: true }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/graphql/schema.gql'),
@@ -21,6 +22,7 @@ import { User } from './modules/user/models/user.model';
       entities: [User],
       synchronize: true,
     }),
+    AuthModule,
     UserModule,
   ],
 })

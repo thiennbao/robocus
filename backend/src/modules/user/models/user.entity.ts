@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @Entity('users')
+@Unique(['username'])
 @ObjectType()
 export class User {
   @PrimaryGeneratedColumn('uuid')

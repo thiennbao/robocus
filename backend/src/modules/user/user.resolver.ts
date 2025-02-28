@@ -1,17 +1,17 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { NotFoundException } from '@nestjs/common';
-import { User } from './models/user.model';
+import { User } from './models/user.entity';
 import { UserService } from './user.service';
 import { UserCreateInput } from './models/user-create.input';
 import { UserUpdateInput } from './models/user-update.input';
 
-@Resolver(() => User)
+@Resolver()
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
   @Query(() => User)
   async user(@Args('id') id: string): Promise<User> {
-    const user = await this.userService.findOne(id);
+    const user = await this.userService.findOneById(id);
     if (!user) {
       throw new NotFoundException(`User with id ${id} not found`);
     }
