@@ -1,6 +1,6 @@
 const Banner = () => {
   return (
-    <div className="max-w-[75rem] m-auto grid">
+    <div className="grid">
       <div className="header-text col-start-1 row-start-1 w-max">
         <h3 className="text-[#d8d8d8]">CUỘC THI ROBOTICS</h3>
         <h1 className="gradient-text text-6xl font-medium">ROBOCUS 2025</h1>
