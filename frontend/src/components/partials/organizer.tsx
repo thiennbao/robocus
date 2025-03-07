@@ -52,7 +52,7 @@ const OrganizerCard = ({
 };
 const SponsorCard = () => {
   return (
-    <div className="h-40 border border-blue-900 flex items-center justify-center">
+    <div className="h-40 -m-[0.5px] border border-blue-900 flex items-center justify-center">
       <img
         className=""
         src="https://api.iconify.design/logos:cloudflare-icon.svg"
