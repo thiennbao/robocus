@@ -9,6 +9,8 @@ import { UserModule } from './modules/user/user.module';
 import { User } from './modules/user/models/user.entity';
 import { AuthModule } from './modules/auth/auth.module';
 import { Competition } from './modules/competition/models/competition.entity';
+import { News } from './modules/news/models/news.entity';
+import { NewsModule } from './modules/news/news.module';
 
 @Module({
   imports: [
@@ -21,12 +23,13 @@ import { Competition } from './modules/competition/models/competition.entity';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [User, Competition],
+      entities: [User, Competition, News],
       synchronize: true,
     }),
     AuthModule,
     UserModule,
     CompetitionModule,
+    NewsModule,
   ],
 })
 export class AppModule {}

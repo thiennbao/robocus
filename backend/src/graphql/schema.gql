@@ -20,11 +20,27 @@ type AuthLoginResponse {
   token: String!
 }
 
+type News {
+  id: String!
+  title: String!
+  thumbnail: String!
+  content: String!
+  images: [String!]!
+  date: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
   user(id: String!): User!
   users: [User!]!
   competition(id: String!): Competition!
   competitions: [Competition!]!
+  news(id: String!): News!
+  newsfeed: [News!]!
 }
 
 type Mutation {
@@ -35,6 +51,9 @@ type Mutation {
   createCompetition(data: CompetitionCreateInput!): Competition!
   updateCompetition(data: CompetitionUpdateInput!): Boolean!
   deleteCompetition(id: String!): Boolean!
+  createNews(data: NewsCreateInput!): News!
+  updateNews(data: NewsUpdateInput!): Boolean!
+  deleteNews(id: String!): Boolean!
 }
 
 input AuthLoginInput {
@@ -66,4 +85,19 @@ input CompetitionUpdateInput {
   description: String
   rule: String
   award: String
+}
+
+input NewsCreateInput {
+  title: String!
+  thumbnail: String!
+  content: String!
+  images: [String!]!
+}
+
+input NewsUpdateInput {
+  id: String!
+  title: String
+  thumbnail: String
+  content: String
+  images: [String!]
 }
