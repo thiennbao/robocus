@@ -4,7 +4,7 @@ const Lookback = () => {
   return (
     <>
       <h3 className="text-[#d8d8d8]">HÀNH TRÌNH ROBOCUS</h3>
-      <div className="flex gap-4 [&>*]:grow">
+      <div className="flex gap-4 *:grow">
         <div className="left-text">
           <h1 className="gradient-text text-5xl font-medium w-[38rem] text-balance">
             CÙNG NHÌN LẠI HÀNH TRÌNH HÌNH THÀNH VÀ PHÁT TRIỂN ROBOCUS
