@@ -1,10 +1,9 @@
-const Spacer = ({ count = 1 }: { count?: number; }) => {
-  const elements = Array.from({ length: count }).map((_, index) => (
-    <div key={index} className="h-10"></div>
-  ));
+const Spacer = ({ count = 1 }: { count?: number }) => {
   return (
-    <div className="spacer">
-      {elements}
+    <div>
+      {Array.from({ length: count }).map((_, index) => (
+        <div key={index} className="h-4"></div>
+      ))}
     </div>
   );
 };
