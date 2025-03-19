@@ -5,7 +5,7 @@ export const Organizer = () => {
       <h1 className="gradient-text text-3xl font-medium mt-4">
         ĐƠN VỊ TỔ CHỨC
       </h1>
-      <div className="flex gap-2 mt-8">
+      <div className="flex gap-8 mt-8">
         <OrganizerCard
           name="Trường ĐH KHTN, ĐHQG - HCM"
           desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quam
@@ -43,9 +43,9 @@ const OrganizerCard = ({
   return (
     <>
       <div className="">
-        <div className="logo w-16 h-16 bg-gray-900"></div>
+        <div className="logo w-16 h-16"></div>
         <h4 className="text-2xl font-medium mt-4">{name}</h4>
-        <p className="font-light mt-4 text-balance">{desc}</p>
+        <p className="w-auto font-light mt-4">{desc}</p>
       </div>
     </>
   );
