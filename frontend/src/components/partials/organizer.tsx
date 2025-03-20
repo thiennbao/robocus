@@ -1,36 +1,8 @@
 export const Organizer = () => {
   const sponsors = [
     {
-      logoUrl: "https://api.iconify.design/logos:cloudflare-icon.svg",
-      sponsorLink: "https://example.com/sponsor1",
-    },
-    {
-      logoUrl: "https://api.iconify.design/logos:cloudflare-icon.svg",
+      logoUrl: "https://talentmind.edu.vn/wp-content/uploads/2015/03/ITEC-logo.jpg",
       sponsorLink: "https://example.com/sponsor2",
-    },
-    {
-      logoUrl: "https://api.iconify.design/logos:cloudflare-icon.svg",
-      sponsorLink: "https://example.com/sponsor3",
-    },
-    {
-      logoUrl: "https://api.iconify.design/logos:cloudflare-icon.svg",
-      sponsorLink: "https://example.com/sponsor4",
-    },
-    {
-      logoUrl: "https://api.iconify.design/logos:cloudflare-icon.svg",
-      sponsorLink: "https://example.com/sponsor5",
-    },
-    {
-      logoUrl: "https://api.iconify.design/logos:cloudflare-icon.svg",
-      sponsorLink: "https://example.com/sponsor6",
-    },
-    {
-      logoUrl: "https://api.iconify.design/logos:cloudflare-icon.svg",
-      sponsorLink: "https://example.com/sponsor7",
-    },
-    {
-      logoUrl: "https://api.iconify.design/logos:cloudflare-icon.svg",
-      sponsorLink: "https://example.com/sponsor8",
     },
   ];
 
@@ -94,7 +66,7 @@ const SponsorCard = ({ logoUrl }: { logoUrl: string }) => {
   return (
     <div className="h-40 -m-[0.5px] border border-blue-900 flex items-center justify-center group">
       <img
-        className="h-[1.5rem] grayscale group-hover:filter-none"
+        className="h-[3rem] w-auto grayscale group-hover:filter-none"
         src={logoUrl}
         alt=""
       />

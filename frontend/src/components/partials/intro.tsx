@@ -4,7 +4,7 @@ const Intro = () => {
   return (
     <div className="m-auto">
       <h3 className="text-[#d8d8d8]" id="#intro">GIỚI THIỆU</h3>
-      <h1 className="gradient-text text-6xl ">ROBOCUS 2025</h1>
+      <h1 className="gradient-text text-6xl font-medium">ROBOCUS 2025</h1>
       <p className="max-w-[46rem] text-[#d8d8d8] font-light mt-3">
         Cuộc thi Robocus được CLB Robotics - IoT, Trường ĐH KHTN, ĐHQGHCM tổ
         chức và thực hiện với sự đồng hành của Trung tâm Đào tạo Quốc tế ITEC
