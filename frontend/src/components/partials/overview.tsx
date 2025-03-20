@@ -32,9 +32,9 @@ const OverviewCard = ({
   link?: string;
 }) => {
   return (
-    <div className="w-[24rem] min-h-[24rem] bg-gray-900 hover:bg-blue-950 p-10">
-      <div className="w-16 h-16 bg-black"></div>
-      <h2 className="text-3xl font-medium mt-8">{name}</h2>
+    <div className="w-[24rem] min-h-[18rem] bg-gray-900 hover:bg-blue-950 p-6">
+      <div className="w-12 h-12 gradient-text text-6xl font-medium">{name.charAt(name.length - 1)}</div>
+      <h2 className="text-3xl font-medium mt-4">{name}</h2>
       <p className="font-light mt-4">{desc}</p>
       <a href="" className="text-[#7b8ce5] inline-block mt-6">TÌM HIỂU THÊM</a>
     </div>
