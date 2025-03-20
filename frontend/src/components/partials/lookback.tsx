@@ -3,7 +3,7 @@ import { Codesandbox, Cpu } from "lucide-react";
 const Lookback = () => {
   return (
     <>
-      <h3 className="text-[#d8d8d8]">HÀNH TRÌNH ROBOCUS</h3>
+      <h3 className="text-[#d8d8d8]" id="lookback">HÀNH TRÌNH ROBOCUS</h3>
       <div className="flex gap-4 *:grow">
         <div className="left-text">
           <h1 className="gradient-text text-5xl font-medium w-[38rem] text-balance">

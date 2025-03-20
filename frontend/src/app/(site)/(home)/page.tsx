@@ -12,8 +12,7 @@ import Footer from "@/components/partials/footer";
 
 export default function HomePage() {
   return (
-    <div className="max-w-[74rem] mx-auto">
-      <Header />
+    <div className="container mx-auto px-4 xl:px-24">
       <Spacer count={1} />
       <Spacer count={4} />
       <Banner />
@@ -30,7 +29,6 @@ export default function HomePage() {
       <Lookback />
       <Spacer count={4} />
       <Awards />
-      <Footer />
     </div>
   );
 }
