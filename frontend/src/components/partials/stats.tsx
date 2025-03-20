@@ -21,7 +21,7 @@ const StatBlock = ({
   return (
     <div className="aspect-square w-[16rem] hover:bg-indigo-400 bg-gray-900 flex flex-col items-center justify-center text-center">
       <span className="text-5xl font-medium">
-        {number} {over && "+"}
+        {number}{over && "+"}
       </span>
       <p className="font-light mt-4">{content}</p>
     </div>

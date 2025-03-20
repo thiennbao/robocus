@@ -36,7 +36,9 @@ export const Organizer = () => {
 
   return (
     <div className="m-auto">
-      <h3 className="text-[#d8d8d8]">ĐƠN VỊ</h3>
+      <h3 className="text-[#d8d8d8]" id="organizer">
+        ĐƠN VỊ
+      </h3>
       <h1 className="gradient-text text-3xl font-medium mt-4">
         ĐƠN VỊ TỔ CHỨC
       </h1>
@@ -46,11 +48,13 @@ export const Organizer = () => {
           desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quam
           quo dolorem repudiandae vero ipsa necessitatibus"
         />
-        <OrganizerCard
-          name="CLB Robotics - IoT"
-          desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quam
+        <div className="ml-6">
+          <OrganizerCard
+            name="CLB Robotics - IoT"
+            desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quam
           quo dolorem repudiandae vero ipsa necessitatibus"
-        />
+          />
+        </div>
         <OrganizerCard
           name="TT Đào tạo Quốc tế ITEC"
           desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quam

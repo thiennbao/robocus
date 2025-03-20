@@ -3,10 +3,10 @@ import Link from "next/link";
 const Header = () => {
   const navs = [
     { name: "Trang chủ", href: "/" },
-    { name: "Giới thiệu", href: "/" },
-    { name: "Thể lệ", href: "/" },
-    { name: "Đơn vị", href: "/" },
-    { name: "Hành trình", href: "/" },
+    { name: "Giới thiệu", href: "#intro" },
+    { name: "Thể lệ", href: "#overview" },
+    { name: "Đơn vị", href: "#organizer" },
+    { name: "Hành trình", href: "#lookback" },
     { name: "Liên hệ", href: "/" },
   ];
 
@@ -15,8 +15,13 @@ const Header = () => {
       <div className="max-w-[75rem] m-auto flex justify-between items-center my-3">
         <Link href={"/"}>
           <div className="logo flex items-center gap-2">
-            {/* <img src="/logo.png" alt="logo" /> */}
-            <svg
+            <img
+              src="https://github.com/robocus/robocus.github.io/blob/main/docs/images/logo/logo.png?raw=true"
+              className="h-[4rem]"
+              alt="logo"
+            />
+
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="50"
               height="50"
@@ -42,7 +47,7 @@ const Header = () => {
               />
             </svg>
 
-            <h2 className="text-4xl font-medium">Robocus</h2>
+            <h2 className="text-4xl font-medium">Robocus</h2> */}
           </div>
         </Link>
 
