@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Overview = () => {
   return (
     <div className="">
@@ -7,14 +9,17 @@ const Overview = () => {
       <div className="mt-8 flex justify-center gap-6">
         <OverviewCard
           name="BẢNG A"
+          link="/challenges/A"
           desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quam quo dolorem repudiandae vero ipsa necessitatibus"
         />
         <OverviewCard
           name="BẢNG B"
+          link="/challenges/B"
           desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quam quo dolorem repudiandae vero ipsa necessitatibus"
         />
         <OverviewCard
           name="BẢNG C"
+          link="/challenges/C"
           desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quam quo dolorem repudiandae vero ipsa necessitatibus"
         />
       </div>
@@ -29,14 +34,14 @@ const OverviewCard = ({
 }: {
   name: string;
   desc: string;
-  link?: string;
+  link: string;
 }) => {
   return (
     <div className="w-[24rem] min-h-[18rem] bg-gray-900 hover:bg-blue-950 p-6">
       <div className="w-12 h-12 gradient-text text-6xl font-medium">{name.charAt(name.length - 1)}</div>
       <h2 className="text-3xl font-medium mt-4">{name}</h2>
       <p className="font-light mt-4">{desc}</p>
-      <a href="" className="text-[#7b8ce5] inline-block mt-6">TÌM HIỂU THÊM</a>
+      <Link href={link} className="text-[#7b8ce5] inline-block mt-6">TÌM HIỂU THÊM</Link>
     </div>
   );
 };
