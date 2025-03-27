@@ -3,7 +3,7 @@ import PageWall from "@/components/partials/pageWall";
 import Spacer from "@/components/partials/spacer";
 import { notFound } from "next/navigation";
 
-const NewsArticlePage = ({ params, searchParams }: { params: { id: string }; searchParams: { search: string } }) => {
+const NewsArticlePage = async ({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ search: string }> }) => {
   const news = newsMockData; // Fetch data with params
 
   if (!news) notFound();
@@ -12,7 +12,7 @@ const NewsArticlePage = ({ params, searchParams }: { params: { id: string }; sea
     <main>
       <PageWall title={news.title} image={news.thumbnail} />
       <Spacer count={6} />
-      <NewsArticle news={news} search={searchParams.search} />
+      <NewsArticle news={news} search={(await searchParams).search} />
       <Spacer count={6} />
     </main>
   );
