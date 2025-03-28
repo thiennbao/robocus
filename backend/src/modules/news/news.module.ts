@@ -3,9 +3,10 @@ import { NewsResolver } from './news.resolver';
 import { NewsService } from './news.service';
 import { Module } from '@nestjs/common';
 import { News } from './models/news.entity';
+import { ImageModule } from '../images/image.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([News])],
+  imports: [TypeOrmModule.forFeature([News]), ImageModule],
   providers: [NewsResolver, NewsService],
 })
 export class NewsModule {}

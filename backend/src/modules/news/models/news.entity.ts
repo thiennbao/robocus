@@ -1,13 +1,17 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Image } from 'src/modules/images/models/image.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('news')
-@Unique(['title'])
 @ObjectType()
 export class News {
   @PrimaryGeneratedColumn('uuid')
   @Field()
   id: string;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Field()
+  date: Date;
 
   @Column()
   @Field()
@@ -15,17 +19,9 @@ export class News {
 
   @Column()
   @Field()
-  thumbnail: string;
-
-  @Column()
-  @Field()
   content: string;
 
-  @Column({ type: 'text', array: true })
-  @Field(() => [String])
-  images: string[];
-
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  @Field()
-  date: Date;
+  @OneToMany(() => Image, (image) => image.news)
+  @Field(() => [Image])
+  images: Image[];
 }

@@ -6,11 +6,8 @@ export class NewsCreateInput {
   title: string;
 
   @Field()
-  thumbnail: string;
-
-  @Field()
   content: string;
 
   @Field(() => [String])
-  images: string[];
+  imageCreateBase64s: string[];
 }

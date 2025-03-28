@@ -11,11 +11,11 @@ export class NewsUpdateInput {
   title: string;
 
   @Field({ nullable: true })
-  thumbnail: string;
-
-  @Field({ nullable: true })
   content: string;
 
   @Field(() => [String], { nullable: true })
-  images: string[];
+  imageCreateBase64s: string[];
+
+  @Field(() => [String], { nullable: true })
+  imageDeleteIds: string[];
 }

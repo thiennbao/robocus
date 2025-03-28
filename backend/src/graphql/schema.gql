@@ -20,13 +20,17 @@ type AuthLoginResponse {
   token: String!
 }
 
+type Image {
+  id: String!
+  url: String!
+}
+
 type News {
   id: String!
-  title: String!
-  thumbnail: String!
-  content: String!
-  images: [String!]!
   date: DateTime!
+  title: String!
+  content: String!
+  images: [Image!]!
 }
 
 """
@@ -89,15 +93,14 @@ input CompetitionUpdateInput {
 
 input NewsCreateInput {
   title: String!
-  thumbnail: String!
   content: String!
-  images: [String!]!
+  imageCreateBase64s: [String!]!
 }
 
 input NewsUpdateInput {
   id: String!
   title: String
-  thumbnail: String
   content: String
-  images: [String!]
+  imageCreateBase64s: [String!]
+  imageDeleteIds: [String!]
 }

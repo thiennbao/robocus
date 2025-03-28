@@ -11,6 +11,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { Competition } from './modules/competition/models/competition.entity';
 import { News } from './modules/news/models/news.entity';
 import { NewsModule } from './modules/news/news.module';
+import { Image } from './modules/images/models/image.entity';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { NewsModule } from './modules/news/news.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [User, Competition, News],
+      entities: [User, Competition, News, Image],
       synchronize: true,
     }),
     AuthModule,

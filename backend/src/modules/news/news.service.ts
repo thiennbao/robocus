@@ -4,18 +4,21 @@ import { News } from './models/news.entity';
 import { Repository } from 'typeorm';
 import { NewsCreateInput } from './models/new-create.input';
 import { NewsUpdateInput } from './models/news-update.input';
+import { ImageService } from '../images/image.service';
 
 @Injectable()
 export class NewsService {
   constructor(
     @InjectRepository(News) private readonly newsRepository: Repository<News>,
+    private readonly imageService: ImageService,
   ) {}
 
   async findOneById(id: string): Promise<News | null> {
-    const news = this.newsRepository.findOneBy({ id });
-    if (!news) {
-      throw new NotFoundException();
-    }
+    const news = await this.newsRepository.findOne({
+      where: { id },
+      relations: ['images'],
+    });
+    if (!news) throw new NotFoundException();
     return news;
   }
 
@@ -24,13 +27,19 @@ export class NewsService {
   }
 
   async create(newsCreateInput: NewsCreateInput) {
-    const newNews = this.newsRepository.create(newsCreateInput);
+    const { imageCreateBase64s, ...rest } = newsCreateInput;
+    const images = await this.imageService.create(imageCreateBase64s);
+    const newNews = this.newsRepository.create({ images, ...rest });
     return this.newsRepository.save(newNews);
   }
 
   async update(newsUpdateInput: NewsUpdateInput) {
-    const { id, ...data } = newsUpdateInput;
-    return this.newsRepository.update({ id }, data);
+    const { id, imageCreateBase64s, imageDeleteIds, ...rest } = newsUpdateInput;
+    const news = await this.findOneById(id);
+    if (!news) throw new NotFoundException();
+    await this.imageService.create(imageCreateBase64s, news);
+    await this.imageService.delete(imageDeleteIds);
+    return this.newsRepository.update({ id }, rest);
   }
 
   async delete(id: string) {
