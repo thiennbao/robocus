@@ -30,49 +30,48 @@ const Lookback = ({
   const secondPart = images.slice(third, 2 * third);
   const thirdPart = images.slice(2 * third);
 
+  const overTheYears = [
+    {
+      year: "Robocus 2023",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, pariatur at quidem a mollitia veniam vel vitae quis. Qui debitis nulla, dolorum quam voluptatem adipisci mollitia cum quod esse eum.",
+    },
+    {
+      year: "Robocus 2024",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, pariatur at quidem a mollitia veniam vel vitae quis. Qui debitis nulla, dolorum quam voluptatem adipisci mollitia cum quod esse eum.",
+    },
+  ];
+
   return (
     <>
       <h3 className="text-[#d8d8d8]" id="lookback">
         HÀNH TRÌNH ROBOCUS
       </h3>
-      <div className="grid gap-4 grid-cols-5">
-        <div className="left-text col-span-2">
-          <h1 className="gradient-text text-5xl font-medium w-[38rem] text-balance">
+      <div className="grid gap-4 lg:grid-cols-5">
+        
+        <div className="left-text lg:col-span-2">
+          <h1 className="gradient-text w-full text-5xl font-medium max-w-[38rem] text-balance">
             CÙNG NHÌN LẠI HÀNH TRÌNH PHÁT TRIỂN ROBOCUS
           </h1>
 
-          <div className="flex flex-col gap-8 mt-10">
-            <div className="flex items-start">
-              <Cpu className="w-24 h-auto mx-10" color="#a6efff" />
-              <div className="h-auto">
-                <h3 className="text-3xl font-medium">Robocus 2023</h3>
-                <p className="font-light mt-6">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Architecto, pariatur at quidem a mollitia veniam vel vitae
-                  quis. Qui debitis nulla, dolorum quam voluptatem adipisci
-                  mollitia cum quod esse eum.
-                </p>
+          {overTheYears.map((item, index) => (
+            <div className="flex flex-col gap-8 mt-10" key={index}>
+              <div className="flex items-start">
+                <Cpu
+                  className="w-8 h-auto mx-10 grow-0 shrink-0"
+                  color="#a6efff"
+                />
+                <div className="h-auto">
+                  <h3 className="text-3xl font-medium">{item.year}</h3>
+                  <p className="font-light mt-6">{item.desc}</p>
+                </div>
               </div>
             </div>
-
-            <div className="flex items-start">
-              <Codesandbox className="w-24 h-auto mx-10" color="#a6efff" />
-              <div className="h-auto">
-                <h3 className="text-3xl">Robocus 2024</h3>
-                <p className="font-light mt-6">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Architecto, pariatur at quidem a mollitia veniam vel vitae
-                  quis. Qui debitis nulla, dolorum quam voluptatem adipisci
-                  mollitia cum quod esse eum.
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-        <div className="right-img col-span-3">
-          {/* <div className="h-[40rem] w-[34rem] bg-gray-900 mx-auto"></div> */}
+        
+        <div className="right-img lg:col-span-3">
           <div
-          // No scrollbar here
+            // No scrollbar here
             className={cn(
               "h-[40rem] items-start overflow-y-auto w-full no-scrollbar",
               className
@@ -80,7 +79,7 @@ const Lookback = ({
             ref={gridRef}
           >
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  max-w-5xl mx-auto gap-10 py-40 px-10"
+              className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 items-start  max-w-5xl mx-auto gap-10 py-40 px-10"
               ref={gridRef}
             >
               <div className="grid gap-10">
@@ -134,6 +133,7 @@ const Lookback = ({
             </div>
           </div>
         </div>
+        
       </div>
     </>
   );
