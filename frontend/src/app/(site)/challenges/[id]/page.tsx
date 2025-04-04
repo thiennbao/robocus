@@ -2,8 +2,8 @@ import { Tabs } from "radix-ui";
 
 const Challenge = () => {
   return (
-    <div className="max-w-[74rem] mx-auto">
-      <h1 className="gradient-text text-6xl font-medium">BẢNG A - WEDO 2.0</h1>
+    <div className="container mx-auto px-4 xl:px-24">
+      <h1 className="gradient-text text-5xl md:text-6xl font-medium">BẢNG A - WEDO 2.0</h1>
 
       <Tabs.Root
         defaultValue="tab1"
