@@ -5,7 +5,7 @@ const Awards = () => {
         BẢNG VINH DANH
       </h2>
 
-      <div className="grid grid-cols-2 gap-10 w-max mt-14 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full mt-14 mx-auto">
         <AwardCard
           name="Trần Nguyễn Phúc Khang"
           award="Giải nhất toàn cuộc thi"
@@ -16,7 +16,7 @@ const Awards = () => {
           award="Giải nhất toàn cuộc thi"
           quote="Em cảm thấy cuộc thi này khá là dễ"
         />
-        {/* <AwardCard /> */}
+        {/* Add more AwardCard components here */}
       </div>
     </div>
   );
@@ -34,21 +34,17 @@ const AwardCard = ({
   imageURL?: string;
 }) => {
   return (
-    <div className="w-max bg-black p-14 flex flex-col items-center">
-      <div className="h-[8rem] w-[8rem] bg-gray-800 rounded-full border-[3px] border-blue-950 overflow-hidden">
+    <div className="bg-black p-8 flex flex-col items-center text-center w-full max-w-[300px] mx-auto">
+      <div className="h-[8rem] w-full max-w-[8rem] bg-gray-800 rounded-full border-[3px] border-blue-950 overflow-hidden">
         {imageURL ? (
-          <img src="{imageURL}" className="w-full h-full object-cover" alt="" />
+          <img src={imageURL} className="w-full h-full object-cover" alt="" />
         ) : (
           <div className="w-full h-full bg-gray-900"></div>
         )}
       </div>
       <h3 className="text-xl mt-8">{name}</h3>
       <p className="text-sm font-extralight mt-2">{award}</p>
-      <p className="font-light mt-4">
-        {'"'}
-        {quote}
-        {'"'}
-      </p>
+      <p className="font-light mt-4">{`"${quote}"`}</p>
     </div>
   );
 };

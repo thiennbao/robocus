@@ -4,9 +4,9 @@ const Overview = () => {
   return (
     <div className="">
       <h3 className="text-[#d8d8d8]" id="overview">THỂ LỆ CUỘC THI</h3>
-      <h1 className="gradient-text text-6xl font-medium">NỘI DUNG BẢNG ĐẤU</h1>
+      <h1 className="gradient-text text-5xl md:text-6xl font-medium">NỘI DUNG BẢNG ĐẤU</h1>
 
-      <div className="mt-8 flex justify-center gap-6">
+      <div className="mt-8 flex flex-wrap justify-center gap-6">
         <OverviewCard
           name="BẢNG A"
           link="/challenges/A"
