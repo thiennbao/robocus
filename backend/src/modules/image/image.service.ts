@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Image } from './models/image.entity';
 import { Repository } from 'typeorm';
@@ -13,17 +13,23 @@ export class ImageService {
 
   async create(base64s: string[], container?: News): Promise<Image[]> {
     return Promise.all(
-      base64s.map((base64) => {
+      base64s.map(async (base64) => {
         const newImage = this.imageRepository.create({
-          url: base64,
           news: container,
+          url: base64,
         });
-        return this.imageRepository.save(newImage);
+        return await this.imageRepository.save(newImage);
       }),
     );
   }
 
   async delete(ids: string[]) {
-    return Promise.all(ids.map((id) => this.imageRepository.delete({ id })));
+    return Promise.all(
+      ids.map(async (id) => {
+        const image = await this.imageRepository.findOneBy({ id });
+        if (!image) throw new NotFoundException();
+        return this.imageRepository.remove(image);
+      }),
+    );
   }
 }

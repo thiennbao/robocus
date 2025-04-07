@@ -11,7 +11,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { Competition } from './modules/competition/models/competition.entity';
 import { News } from './modules/news/models/news.entity';
 import { NewsModule } from './modules/news/news.module';
-import { Image } from './modules/images/models/image.entity';
+import { Image } from './modules/image/models/image.entity';
 
 @Module({
   imports: [

@@ -1,17 +1,21 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { News } from 'src/modules/news/models/news.entity';
+import Storage from 'src/utils/storage';
 import {
+  AfterRemove,
   BeforeInsert,
+  BeforeRemove,
   Column,
   Entity,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
+import { v4 } from 'uuid';
 
 @Entity('image')
 @ObjectType()
 export class Image {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn('uuid')
   @Field()
   id: string;
 
@@ -30,8 +34,15 @@ export class Image {
   news: News;
 
   @BeforeInsert()
-  upload() {
-    // Todo: upload to storage
-    this.url = 'data:image/png;base64,' + this.url;
+  async upload() {
+    const storage = new Storage();
+    this.id = v4();
+    this.url = await storage.upload(this.id, this.url);
+  }
+
+  @BeforeRemove()
+  async delete() {
+    const storage = new Storage();
+    await storage.delete(this.id);
   }
 }

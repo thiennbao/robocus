@@ -1,6 +1,12 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Image } from 'src/modules/images/models/image.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Image } from 'src/modules/image/models/image.entity';
+import {
+  BeforeRemove,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('news')
 @ObjectType()
@@ -24,4 +30,9 @@ export class News {
   @OneToMany(() => Image, (image) => image.news)
   @Field(() => [Image])
   images: Image[];
+
+  @BeforeRemove()
+  deleteImages() {
+    this.images.forEach((image) => image.delete());
+  }
 }

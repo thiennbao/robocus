@@ -4,7 +4,7 @@ import { News } from './models/news.entity';
 import { Repository } from 'typeorm';
 import { NewsCreateInput } from './models/new-create.input';
 import { NewsUpdateInput } from './models/news-update.input';
-import { ImageService } from '../images/image.service';
+import { ImageService } from '../image/image.service';
 
 @Injectable()
 export class NewsService {
@@ -37,12 +37,18 @@ export class NewsService {
     const { id, imageCreateBase64s, imageDeleteIds, ...rest } = newsUpdateInput;
     const news = await this.findOneById(id);
     if (!news) throw new NotFoundException();
-    await this.imageService.create(imageCreateBase64s, news);
-    await this.imageService.delete(imageDeleteIds);
+    if (imageCreateBase64s) {
+      await this.imageService.create(imageCreateBase64s, news);
+    }
+    if (imageDeleteIds) {
+      await this.imageService.delete(imageDeleteIds);
+    }
     return this.newsRepository.update({ id }, rest);
   }
 
   async delete(id: string) {
-    return this.newsRepository.delete({ id });
+    const news = await this.findOneById(id);
+    if (!news) throw new NotFoundException();
+    return this.newsRepository.remove(news);
   }
 }
