@@ -1,0 +1,110 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type News {
+  id: String!
+  date: DateTime!
+  title: String!
+  content: String!
+  images: [Image!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Image {
+  id: String!
+  url: String!
+}
+
+type Competition {
+  id: String!
+  name: String!
+  description: String!
+  rule: String!
+  award: String!
+  images: [Image!]!
+}
+
+type User {
+  id: String!
+  username: String!
+  password: String!
+}
+
+type AuthLoginResponse {
+  token: String!
+}
+
+type Query {
+  user(id: String!): User!
+  users: [User!]!
+  competition(id: String!): Competition!
+  competitions: [Competition!]!
+  news(id: String!): News!
+  newsfeed: [News!]!
+}
+
+type Mutation {
+  login(data: AuthLoginInput!): AuthLoginResponse!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!): Boolean!
+  deleteUser(id: String!): Boolean!
+  createCompetition(data: CompetitionCreateInput!): Competition!
+  updateCompetition(data: CompetitionUpdateInput!): Boolean!
+  deleteCompetition(id: String!): Boolean!
+  createNews(data: NewsCreateInput!): News!
+  updateNews(data: NewsUpdateInput!): Boolean!
+  deleteNews(id: String!): Boolean!
+}
+
+input AuthLoginInput {
+  username: String!
+  password: String!
+}
+
+input UserCreateInput {
+  username: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  id: String!
+  username: String
+  password: String
+}
+
+input CompetitionCreateInput {
+  name: String!
+  description: String!
+  rule: String!
+  award: String!
+  imageCreateBase64s: [String!]!
+}
+
+input CompetitionUpdateInput {
+  id: String!
+  name: String
+  description: String
+  rule: String
+  award: String
+  imageCreateBase64s: [String!]
+  imageDeleteIds: [String!]
+}
+
+input NewsCreateInput {
+  title: String!
+  content: String!
+  imageCreateBase64s: [String!]!
+}
+
+input NewsUpdateInput {
+  id: String!
+  title: String
+  content: String
+  imageCreateBase64s: [String!]
+  imageDeleteIds: [String!]
+}

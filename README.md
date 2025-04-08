@@ -18,7 +18,7 @@
 ## Tech Stack
 
 - **Frontend**: Next.js, React, TypeScript, Tailwind CSS
-- **Backend**: NestJS, TypeScript, Prisma, PostgreSQL, JWT
+- **Backend**: NestJS, TypeScript, GraphQL, TypeORM, PostgreSQL, JWT
 - **Deployment**: Docker
 - **Testing**: Jest
 
@@ -45,13 +45,6 @@
 3. Configure the environment variables for the frontend:
     - Create a `.env` file and add the necessary variables
 
-4. Run the development:
-   ```bash
-   npm run dev
-   ```
-
-5. The frontend should now be running on `http://localhost:3000`.
-
 ### Backend Setup (NestJS)
 
 1. Navigate to the backend directory:
@@ -66,13 +59,6 @@
 
 3. Configure the environment variables for the backend:
     - Create a `.env` file and add the necessary variables
-
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. The backend should now be running on `http://localhost:8000` (or your specified port).
 
 ### Running the Application
 
@@ -89,7 +75,7 @@ To run both frontend and backend locally, follow these steps:
    npm run dev
    ```
 
-Now, the frontend will communicate with the backend API, and you should be able to access the application through `http://localhost:3000`.
+Now, the backend should run on `http://localhost:8000` (or your specified port), and you should be able to access the frontend through `http://localhost:3000`.
 
 ## Folder Structure
 
@@ -113,17 +99,14 @@ frontend/
 
 ```
 nestjs/
-├── prisma/                # Prisma schema
 ├── src/                   # Source code
-│   ├── graphql/           # GraphQL setup and configurations
-│   ├── app.controller.ts  # Main app controller defining GraphQL resolver routes
+│   ├── graphql/           # GraphQL schemas
+│   ├── modules/           # Modules for each entity
 │   ├── app.module.ts      # Root module of the application
-│   ├── app.service.ts     # Main business logic or services
+│   └── main.ts            # The entry file of the application
 ├── test/                  # Test folder
-├── .env                   # Frontend environment variables
-├── nest-cli.json          # NestJS configuration file
-├── package.json           # Frontend dependencies
-└── tsconfig.json          # TypeScript configuration
+├── .env                   # Environment variables
+└── package.json           # Dependencies
 ```
 
 ## API Documentation
