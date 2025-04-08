@@ -13,4 +13,7 @@ export class CompetitionCreateInput {
 
   @Field()
   award: string;
+
+  @Field(() => [String])
+  imageCreateBase64s: string[];
 }

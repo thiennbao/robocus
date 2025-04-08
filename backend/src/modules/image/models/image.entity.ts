@@ -1,8 +1,8 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { Competition } from 'src/modules/competition/models/competition.entity';
 import { News } from 'src/modules/news/models/news.entity';
 import Storage from 'src/utils/storage';
 import {
-  AfterRemove,
   BeforeInsert,
   BeforeRemove,
   Column,
@@ -32,6 +32,13 @@ export class Image {
     onDelete: 'CASCADE',
   })
   news: News;
+
+  @ManyToOne(() => Competition, (competition) => competition.images, {
+    eager: true,
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
+  competition: Competition;
 
   @BeforeInsert()
   async upload() {

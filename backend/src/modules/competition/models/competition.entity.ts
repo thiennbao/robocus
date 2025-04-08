@@ -1,5 +1,13 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Image } from 'src/modules/image/models/image.entity';
+import {
+  BeforeRemove,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
 
 @Entity('competitions')
 @Unique(['name'])
@@ -24,4 +32,13 @@ export class Competition {
   @Column()
   @Field()
   award: string;
+
+  @OneToMany(() => Image, (image) => image.competition)
+  @Field(() => [Image])
+  images: Image[];
+
+  @BeforeRemove()
+  deleteImages() {
+    this.images.forEach((image) => image.delete());
+  }
 }

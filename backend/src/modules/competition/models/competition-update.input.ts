@@ -18,4 +18,10 @@ export class CompetitionUpdateInput {
 
   @Field({ nullable: true })
   award: string;
+
+  @Field(() => [String], { nullable: true })
+  imageCreateBase64s: string[];
+
+  @Field(() => [String], { nullable: true })
+  imageDeleteIds: string[];
 }

@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Image } from './models/image.entity';
 import { Repository } from 'typeorm';
 import { News } from '../news/models/news.entity';
+import { Competition } from '../competition/models/competition.entity';
 
 @Injectable()
 export class ImageService {
@@ -11,11 +12,18 @@ export class ImageService {
     private readonly imageRepository: Repository<Image>,
   ) {}
 
-  async create(base64s: string[], container?: News): Promise<Image[]> {
+  async create(
+    base64s: string[],
+    container?: News | Competition,
+  ): Promise<Image[]> {
     return Promise.all(
       base64s.map(async (base64) => {
+        const news = container instanceof News ? container : undefined;
+        const competition =
+          container instanceof Competition ? container : undefined;
         const newImage = this.imageRepository.create({
-          news: container,
+          news,
+          competition,
           url: base64,
         });
         return await this.imageRepository.save(newImage);

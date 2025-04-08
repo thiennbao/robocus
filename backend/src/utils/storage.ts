@@ -38,7 +38,6 @@ class Storage {
       Bucket: process.env.CLOUDFLARE_BUCKET,
       Key: `images/${id}`,
     });
-    console.log(`images/${id}`)
     await this.s3Client.send(command);
   }
 }
